@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style1.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayer Thomas Tp3</title>
+</head>
+<body>
+    <header>
+        <h1>Consigne</h1>
+        <p><ul>
+            <li> L’intitulé de la / des question(s) traitée(s).</li>
+            <li> Votre proposition de réponse sous forme de requête SQL.</li>
+            <li>
+                 Le résultat de chaque requête sous forme de capture d’écran.</li>
+        </ul>
+            </p>
+    </header>
+<main>
+<article>
+    <h3>
+    
+    1. Compter le nombre de chambres total.
+</h3>
+    <p>SELECT COUNT (chb_numero) FROM t_chambre;</p>
+    <img src="./src/1.png" alt="commande terminal">
+</article>
+<article>
+    <h3>2. Retrouver le prix maximal d’une chambre.
+
+    </h3>
+  
+    <p>SELECT MAX (trf_chb_prix) FROM tj_trf_chb;</p>
+    <img src="./src/2.png" alt="commande terminal">
+</article>
+<article>
+    <h3>3. Retrouver le nombre de places totales dans l'hôtel.
+    </h3>
+    <p>SELECT SUM (chb_couchage) FROM t_chambre;</p>
+    <img src="./src/3.png" alt="commande terminal">
+</article>
+<article>
+    <h3>4. Retrouver le prix moyen des chambres.
+    </h3>
+    <p>SELECT AVG (trf_chb_prix) FROM tj_trf_chb;</p>
+    <img src="./src/4.png" alt="commande terminal">
+</article>
+<article>
+    <h3>
+        5. Compter le nombre de clients dont l’enseigne est renseignée.
+        
+</h3>
+    <p>SELECT COUNT (cli_nom) FROM t_client WHERE cli_enseigne IS NOT NULL;</p>
+    <img src="./src/5.png" alt="commande terminal">
+</article>
+<article>
+    <h3>6. Retrouver le prix moyen des chambres durant la période du 15/01/2000 au 15/06/2000.
+
+    </h3>
+  
+  <p>⚠ Pas de jointure ⚠</p>
+    <p>SELECT AVG (trf_chb_prix) FROM tj_trf_chb WHERE trf_date_debut>TO_DATE ('20000115','YYYYMMDD') AND trf_date_debut<TO_DATE('20000615','YYYYMMDD');</p>
+    <img src="./src/6.png" alt="commande terminal">
+</article>
+<article>
+    <h3>7. Compter le nombre de clients par genre. (Nombre de M., de Mme. et de Melle. en une seule requête).
+    </h3>
+    <p>SELECT tit_code,COUNT (tit_code) FROM t_client GROUP BY tit_code;
+    </p>
+    <img src="./src/7.png" alt="commande terminal">
+</article>
+<article>
+    <h3>8. Compter le nombre de chambres par étage.</h3>
+    <p>SELECT COUNT(chb_etage),chb_etage FROM t_chambre GROUP BY chb_etage;</p>
+    <img src="./src/8.png" alt="commande terminal">
+</article>
+<article>
+    <h3>9. Retrouver le nombre de places totales dans l'hôtel par étage.
+    </h3>
+    <p>SELECT SUM (chb_couchage),chb_etage FROM t_chambre GROUP BY chb_etage;</p>
+    <img src="./src/9.png" alt="commande terminal">
+</article>
+<article>
+    <h3>Retrouver le nombre de places totales dans l'hôtel par étage seulement si ce nombre est supérieur à 15
+    </h3>
+    <p>SELECT SUM (chb_couchage),chb_etage FROM t_chambre GROUP BY chb_etage HAVING SUM (chb_couchage)>15;</p>
+    <img src="./src/10.png" alt="commande terminal">
+</article>
+</div>
+</main>    
+    <footer>
+        <h2>TP3 : Requêtes statistiques
+            mono tables Hayer Thomas</h2>
+    </footer>
+</body>
+</html>
